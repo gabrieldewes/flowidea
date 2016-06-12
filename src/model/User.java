@@ -1,13 +1,8 @@
 package model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 /**
  * Created by Dewes on 11/06/2016.
  */
-@XmlRootElement(name = "user")
-@XmlType(propOrder = {"id_user", "fullname", "username", "password"})
 public class User {
     private long id_user;
     private String fullname;

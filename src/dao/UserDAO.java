@@ -1,14 +1,13 @@
 package dao;
 
-import com.sun.xml.ws.developer.Stateful;
 import database.DBHelper;
 import model.User;
-import service.GenericDAO;
 import service.UserService;
 
 import javax.jws.WebService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -26,6 +25,10 @@ public class UserDAO implements UserService {
     }
 
     private static final String INSERT = "INSERT INTO users (fullname, username, password) VALUES (?, ?, ?); ";
+    private static final String UPDATE = "UPDATE users SET fullname=?, username=?, password=? WHERE id+user=?; ";
+    private static final String DELETE = "DELETE FROM users WHERE id_user=?; ";
+    private static final String SELECT = "SELECT * FROM users WHERE id_user=?; ";
+    private static final String GET = "SELECT * FROM users; ";
 
     @Override
     public boolean save(String fullname, String username, String password) {
@@ -60,12 +63,46 @@ public class UserDAO implements UserService {
     }
 
     @Override
-    public boolean getUser(long id_user, String fullname, String username) {
+    public boolean getById(long id_user) {
+        return false;
+    }
+
+    @Override
+    public boolean getByUsername(String username) {
         return false;
     }
 
     @Override
     public ArrayList<User> getAll() {
+        try {
+            conn = DBHelper.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(GET);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.isBeforeFirst()) {
+                while (rs.next()) {
+                    long id = rs.getLong("id_user");
+                    String name = rs.getString("fullname");
+                    String user = rs.getString("username");
+                    String pass = rs.getString("password");
+
+                    User u = new User(id, name, user, pass);
+                    users.add(u);
+                    System.out.println("(" + id + ") - "+ name + " : " + user +" : "+ pass);
+                }
+            }
+            stmt.close();
+            conn.close();
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro "+ e.getMessage());
+        }
         return null;
     }
+
+    @Override
+    public boolean checkPassword(String username, String password) {
+        return false;
+    }
+
 }

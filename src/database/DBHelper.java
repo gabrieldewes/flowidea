@@ -43,9 +43,9 @@ public class DBHelper {
     }
 
     public static void main(String[] args) {
-        System.out.println("conexao: "+getConnection());
-        System.out.println("conexao: "+getConnection());
-        System.out.println("conexao: "+getConnection());
+        System.out.println("conexão: "+getConnection());
+        System.out.println("conexão: "+getConnection());
+        System.out.println("conexão: "+getConnection());
     }
 
 }
