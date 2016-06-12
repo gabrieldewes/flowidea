@@ -1,4 +1,4 @@
-import server.UserService;
+import model.User;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -11,14 +11,16 @@ import java.net.URL;
 public class Client {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://localhost:9000/service?wsdl");
-            QName qname = new QName("http://service/","UserDAOService");
+            URL url = new URL("http://localhost:9000/dao?wsdl");
+            QName qname = new QName("http://dao/","MyDAOService");
             Service ws = Service.create(url, qname);
-            server.UserService sus = ws.getPort(server.UserService.class);
-            String nome = "gabriel";
-            System.out.println("mandei o "+ nome +" pro webservice...");
 
-            sus.save(nome, nome, nome);
+            service.GenericDAO sus = ws.getPort(service.GenericDAO.class);
+            sus.save(new User(0, "gabriel", "gabriel", "gabriel"));
+
+            //service.UserService sus = ws.getPort(service.UserService.class);
+            //sus.save("Dewes", "dewes", "dewes");
+            //sus.save("Fernando", "fer", "fer");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
