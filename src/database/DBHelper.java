@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DBHelper {
     private static final String IP_ADDRESS = "localhost";
     private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String PASS = "";
     private static final String DB_NAME = "flowidea_db";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     public static Connection CONN = null;
@@ -22,22 +22,22 @@ public class DBHelper {
                 CONN = DriverManager.getConnection("jdbc:mysql://"+ IP_ADDRESS +"/"+ DB_NAME +"?useSSL=false", USER, PASS);
                 System.out.println("Conexão aberta.");
             }
-            return CONN;
-        }catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             closeConnection();
             throw new RuntimeException(e);
         }
+        return CONN;
     }
 
     private static void closeConnection(){
-        try{
-            if(CONN!=null && !CONN.isClosed()){
+        try {
+            if (CONN!=null && !CONN.isClosed()) {
                 CONN.close();
                 System.out.println("Conexão fechada. ");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

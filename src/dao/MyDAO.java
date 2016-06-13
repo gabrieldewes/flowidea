@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class MyDAO implements GenericDAO<User> {
     Connection conn = null;
     private static final String INSERT = "INSERT INTO users (fullname, username, password) VALUES (?, ?, ?); ";
+
     @Override
     public boolean save(User u) {
         System.out.println("=> "+ u.getFullname() +" chegou");

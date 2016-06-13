@@ -2,6 +2,7 @@ package service;
 
 import dao.UserDAO;
 import model.User;
+import util.ResponseDataArrayList;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -33,19 +34,14 @@ public interface UserService {
             @WebParam(name = "id_user") long id_user);
 
     @WebMethod
-    boolean getById(
+    User getById(
             @WebParam(name = "id_user") long id_user);
 
     @WebMethod
-    boolean getByUsername(
+    User getByUsername(
             @WebParam(name = "username") String username);
 
     @WebMethod
-    ArrayList<User> getAll ();
-
-    @WebMethod
-    boolean checkPassword (
-            @WebParam(name = "username") String username,
-            @WebParam(name = "password") String password);
+    ResponseDataArrayList getAll ();
 
 }

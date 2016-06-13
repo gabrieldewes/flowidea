@@ -20,6 +20,29 @@ public class User {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getId_user() != user.getId_user()) return false;
+        if (!getFullname().equals(user.getFullname())) return false;
+        if (!getUsername().equals(user.getUsername())) return false;
+        return getPassword().equals(user.getPassword());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (getId_user() ^ (getId_user() >>> 32));
+        result = 31 * result + getFullname().hashCode();
+        result = 31 * result + getUsername().hashCode();
+        result = 31 * result + getPassword().hashCode();
+        return result;
+    }
+
     public long getId_user() {
         return id_user;
     }
