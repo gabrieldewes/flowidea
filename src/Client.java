@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class Client {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://localhost:9000/flowidea/login?wsdl");
-            URL url2 = new URL("http://localhost:9000/flowidea/user?wsdl");
-            URL url3 = new URL("http://localhost:9000/flowidea/idea?wsdl");
+            URL url = new URL("http://localhost:8080/flowidea/login?wsdl");
+            URL url2 = new URL("http://localhost:8080/flowidea/user?wsdl");
+            URL url3 = new URL("http://localhost:8080/flowidea/idea?wsdl");
 
             QName qname = new QName("http://dao/","LoginDAOService");
             QName qname2 = new QName("http://dao/","UserDAOService");

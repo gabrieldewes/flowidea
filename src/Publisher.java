@@ -6,8 +6,8 @@ import javax.xml.ws.Endpoint;
 public class Publisher {
     public static void main(String[] args) {
         //Endpoint.publish("http://localhost:9000/flowidea/obj", new dao.MyDAO() );
-        Endpoint.publish("http://localhost:9000/flowidea/login", new dao.LoginDAO() );
-        Endpoint.publish("http://localhost:9000/flowidea/user", new dao.UserDAO() );
-        Endpoint.publish("http://localhost:9000/flowidea/idea", new dao.IdeaDAO() );
+        Endpoint.publish("http://localhost:8080/flowidea/login", new dao.LoginDAO() );
+        Endpoint.publish("http://localhost:8080/flowidea/user", new dao.UserDAO() );
+        Endpoint.publish("http://localhost:8080/flowidea/idea", new dao.IdeaDAO() );
     }
 }
