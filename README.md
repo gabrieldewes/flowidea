@@ -1,2 +1,2 @@
 # flowidea
-Compartilhe idéias de apps.
+Exemplo de aplicação Spring MVC + WebService SOAP
