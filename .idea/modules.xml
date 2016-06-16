@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/flowidea.iml" filepath="$PROJECT_DIR$/flowidea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebSOAP.iml" filepath="$PROJECT_DIR$/WebSOAP.iml" />
     </modules>
   </component>
 </project>
